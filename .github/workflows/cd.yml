@@ -43,7 +43,7 @@ jobs:
     needs: infra
     defaults:
       run:
-        working-directory: ./fastapi-app/
+        working-directory: ./fastapi-db-app/
     steps:
       - name: Checkout code
         uses: actions/checkout@v4

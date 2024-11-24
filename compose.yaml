@@ -10,8 +10,8 @@ services:
     environment:
       - DB_HOST=db
       - DB_PORT=3306
-      - DB_USERNAME=user
-      - DB_PASSWORD=password
+      - DB_USERNAME=root
+      - DB_PASSWORD=rootpassword
     volumes:
       - ./fastapi-db-app/:/app/
     depends_on:

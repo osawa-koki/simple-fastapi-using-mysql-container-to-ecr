@@ -2,6 +2,12 @@
 
 🫵🫵🫵 簡単なFastAPIアプリケーション(DB操作あり)をECRにデプロイしてみる！  
 
+[![ci](https://github.com/osawa-koki/simple-fastapi-using-mysql-container-to-ecr/actions/workflows/ci.yml/badge.svg)](https://github.com/osawa-koki/simple-fastapi-using-mysql-container-to-ecr/actions/workflows/ci.yml)
+[![cd](https://github.com/osawa-koki/simple-fastapi-using-mysql-container-to-ecr/actions/workflows/cd.yml/badge.svg)](https://github.com/osawa-koki/simple-fastapi-using-mysql-container-to-ecr/actions/workflows/cd.yml)
+[![Dependabot Updates](https://github.com/osawa-koki/simple-fastapi-using-mysql-container-to-ecr/actions/workflows/dependabot/dependabot-updates/badge.svg)](https://github.com/osawa-koki/simple-fastapi-using-mysql-container-to-ecr/actions/workflows/dependabot/dependabot-updates)
+
+![成果物](./fruit.gif)  
+
 ## ローカルでの開発
 
 以下のコマンドを実行してください。  
@@ -58,6 +64,9 @@ GitHub Actionsでデプロイする場合には、以下のシークレットを
 デプロイされたECRをローカルでテストする場合には、以下のコマンドを実行してください。  
 
 ```shell
+docker compose down
+docker compose up -d db
+
 export ECR_REPOSITORY_URI=$(aws ecr describe-repositories --repository-names fastapi-db-app --query 'repositories[0].repositoryUri' --output text)
 aws ecr get-login-password | docker login --username AWS --password-stdin $ECR_REPOSITORY_URI
 

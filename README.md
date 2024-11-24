@@ -4,21 +4,11 @@
 
 ## ローカルでの開発
 
-DevContainerに入り、以下のコマンドを実行してください。  
+以下のコマンドを実行してください。  
 
 ```shell
-cd ./fastapi-app/
-python -m venv /myenv/
-source /myenv/bin/activate
-pip install -r ./requirements.txt
-uvicorn main:app --reload --host 0.0.0.0 --port 80
-```
-
-FastAPIのDockerコンテナをローカルで起動させる場合には、以下のコマンドを実行してください。  
-
-```shell
-docker build -t fastapi-app ./fastapi-app/
-docker run --rm --name fastapi-app -p 80:80 fastapi-app
+docker compose build
+docker compose up -d
 ```
 
 ## デプロイ
@@ -27,6 +17,8 @@ DevContainerに入り、以下のコマンドを実行してください。
 ※ `~/.aws/credentials`にAWSの認証情報があることを前提とします。  
 
 ```shell
+cdk deploy
+
 export ECR_REPOSITORY_URI=$(aws ecr describe-repositories --repository-names fastapi-db-app --query 'repositories[0].repositoryUri' --output text)
 aws ecr get-login-password | docker login --username AWS --password-stdin $ECR_REPOSITORY_URI
 

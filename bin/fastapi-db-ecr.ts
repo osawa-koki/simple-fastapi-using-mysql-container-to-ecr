@@ -1,10 +1,12 @@
 #!/usr/bin/env node
 import 'source-map-support/register';
 import * as cdk from 'aws-cdk-lib';
-import { FastapiEcrStack } from '../lib/fastapi-ecr-stack';
+
+import { FastapiDbEcrStack } from '../lib/fastapi-db-ecr-stack';
+import { BASE_STACK_NAME } from '../lib/const';
 
 const app = new cdk.App();
-new FastapiEcrStack(app, 'FastapiEcrStack', {
+new FastapiDbEcrStack(app, `${BASE_STACK_NAME}`, {
   /* If you don't specify 'env', this stack will be environment-agnostic.
    * Account/Region-dependent features and context lookups will not work,
    * but a single synthesized template can be deployed anywhere. */

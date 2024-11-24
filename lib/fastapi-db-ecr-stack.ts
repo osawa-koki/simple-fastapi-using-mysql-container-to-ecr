@@ -2,15 +2,15 @@ import * as cdk from 'aws-cdk-lib';
 import { Construct } from 'constructs';
 import * as ecr from 'aws-cdk-lib/aws-ecr';
 
-export class FastapiEcrStack extends cdk.Stack {
+export class FastapiDbEcrStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
 
     // The code that defines your stack goes here
 
     // example resource
-    const repository = new ecr.Repository(this, 'FastapiAppRepository', {
-      repositoryName: 'fastapi-app',
+    const repository = new ecr.Repository(this, 'FastapiDbAppRepository', {
+      repositoryName: 'fastapi-db-app',
     });
 
     new cdk.CfnOutput(this, 'RepositoryURI', {

@@ -1,5 +1,5 @@
 {
-  "app": "npx ts-node --prefer-ts-exts bin/fastapi-ecr.ts",
+  "app": "npx ts-node --prefer-ts-exts bin/fastapi-db-ecr.ts",
   "watch": {
     "include": [
       "**"
